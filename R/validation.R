@@ -1,27 +1,25 @@
 ### validation ###
-#' Title
-#'
-#' @param x 
-#' @param data.info 
-#' @param T0 
-#' @param MCV 
-#' @param controls 
-#' @param time0 
-#' @param comp 
-#' @param ntest 
-#' @param LOSOXV 
-#' @param permutime 
-#' @param permuclass 
+#' @Title validation
+#' @description the function valdates a PLS-DA model using various forms of validations, including MCCV and permutation tests.
+#' @param x a PLSDA model obtained from the function PLSDA_analysis
+#' @param data.info the columns containing descriptive information regarding your table. default = data.info = c("sample", "subject", "time", "class")  
+#' @param T0 boolean: if TRUE, it normalizes the data according to the beginning of the treatment. default = FALSE
+#' @param MCV boolean: if TRUE, it performs Monte Carlo cross validation. default = FALSE
+#' @param controls indicates the lines where the control samples are located
+#' @param time0 the time of the beginning of the treatment
+#' @param comp number of componnents to be used in the PLS-DA model. default = 3
+#' @param ntest number of tests to be executed during the validation. default = 20
+#' @param LOSOXV performs leave one subject out cross validation. default = FALSE
+#' @param permutime performs permutation of samples across time
+#' @param permuclass performs permutation of samples across class
 #' @import mixOmics
 #' @import dplyr
 #' @import purrr
-#'
-#' @return
+#' @return result
 #' @export validate
-#'
 #' @examples
 #' validate(x)
-validate <- function(x, data.info = c("sample", "subject", "time", "class"), T0, MCV = F, controls,
+validate <- function(x, data.info = c("sample", "subject", "time", "class"), T0 = F, MCV = F, controls,
                         time0, comp = 3, ntest = 20, LOSOXV = F, permutime = F, permuclass = F) {
   
   finres <- list(length = length(ntest))

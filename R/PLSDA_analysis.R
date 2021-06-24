@@ -1,5 +1,5 @@
 #' @Title PLSDA_analysis
-#'
+#' @name PLSDA_analysis
 #' @param x
 #' @param data.info
 #' @param multilevel
@@ -15,8 +15,9 @@
 #' @param model
 #' @param vip_value
 #' @import mixOmics
-#'
+#' @description the function performs PCA and PLS-DA analysis on your data and it evaluates the strength of the PLS-DA model using MCCV. 
 #' @return VIPs
+#' @return plsda1
 #' @export PLSDA_analysis
 #'
 #' @examples

@@ -12,7 +12,6 @@
 #' @import gplots
 #' @importFrom heatmap.plus heatmap.plus
 #' @import stringr
-#' @import heatmap3
 #' @return
 #' @export do_heatmap
 #'

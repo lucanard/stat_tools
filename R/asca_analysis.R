@@ -1,11 +1,11 @@
-#' @Title performs asca analysis
+#' @Title ASCA_analysis
 #'
 #' @param x
 #' @param data.info
 #' @param permutations
 #' @param plots
 #' @import stringr
-#' @import MeTStaT
+#' @import MetStaT
 #' @return permutation
 #' @export asca_analysis
 #'

@@ -1,5 +1,5 @@
 #' @Title time0_subtraction
-#'
+#' @description 
 #' @param x
 #' @param time0
 #' @param data.info

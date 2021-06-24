@@ -1,0 +1,28 @@
+Package: stat.tools
+Title: statistical tools to analyse metabolomics and complex data
+Version: 0.0.1
+Authors@R: 
+    person(given = "Luca",
+           family = "Narduzzi",
+           role = c("aut", "cre"),
+           email = "nardluca@gmail.com",
+           comment = c(ORCID = "https://orcid.org/0000-0002-1921-651X"))
+Description: The package use different statistical tools to better analyse and visualize metabolomics data.
+Imports:
+    dplyr,
+    purrr,
+    stringr,
+    mixOmics,
+    MetStaT,
+    reshape2,
+    ggplot2,
+    gplots,
+    RColorBrewer,
+    heatmap.plus
+Suggests: 
+    heatmap3,
+License: CC BY 4.0
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0

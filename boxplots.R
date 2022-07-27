@@ -7,12 +7,13 @@
 #' @import reshape2
 #' @import ggplot2
 #' @import stringr
+#' @import ggpubr
 #' @return 
 #' @export create_boxplot
 #'
 #' @examples
 #' create_boxplot(x)
-create_boxplot <- function(x, result = NULL, data.info = c("sample", "subject", "time", "class"), title = "VIPs trends") {
+create_boxplot <- function(x, result = NULL, trendplot = T, data.info = c("sample", "subject", "time", "class"), title = "VIPs trends") {
 
 factors <- x[,data.info]
 dati <- x
@@ -45,6 +46,7 @@ df.m <- melt(df, id.vars = c("sample", "subject", "class", "time"))
 
 #df.m <- hj
 #faceting
+if (trendplot == T) {
 p <- ggplot(data = subset(df.m, !is.na(value)), aes(x= as.numeric(time), y=value, group = interaction(as.numeric(time), as.numeric(as.factor(class)))))
 #p <- p + geom_boxplot(aes(color = class, group = paste0(class, time, variable)), width=0.7)
 #p <- p + geom_path(aes(color=class, group = paste0(subject)))
@@ -56,6 +58,13 @@ p <- p + theme(title = element_text(size = 6, face="bold"), axis.text=element_te
 #p <- p + scale_fill_manual(breaks = c("EGH", "EPO"), values=c("darkgoldenrod1", "deepskyblue2"))
 #p <- p + scale_color_manual(breaks = c("EGH", "EPO"), values=c("darkgoldenrod3", "blue2", "darkgoldenrod3", "blue2"))
 p <- p + theme_bw()
+} else {
+  p <- ggplot(data = subset(df.m, !is.na(value)), aes(x= class, y=value, group = class))
+  p <- p + geom_boxplot(aes(color = class, group = paste0(class, variable)), width=0.7)
+  p + geom_jitter(aes(color = class, group = paste0(class, variable)), position = "identity", alpha = 0.5)
+  p <- p + theme_bw()
+  p <- p + stat_compare_means(method = "wilcox.test", label.y = -0.05, cex = 3)
+  }
 #p <- p + geom_path(aes(color=as.factor(subject), group = paste0(subject, variable), linetype = as.factor(class)))
 #p <- p + stat_summary(aes(color= class, group = paste0(class, variable)), fun.y=mean, geom="line", lwd = 1)
 #p <- p + stat_summary (aes(color= class, group = paste0(class, variable)), fun.data=mean_se, geom="ribbon", alpha=0.25)

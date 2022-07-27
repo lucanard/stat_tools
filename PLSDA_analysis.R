@@ -40,9 +40,9 @@ design = data.frame(sample = as.numeric(as.factor(factors[,"subject"])))
 classes <- factors[,"class"]
 if (multilevel == T) {X <- withinVariation(X = X, design = design)}
 col.stimu <- rainbow(length(levels(as.factor(classes))))
-pca1 <- pca(X, ncomp = comp)
+pca1 <- pca(X, ncomp = comp, scale = scaled)
 plotIndiv(pca1, ind.names = paste(as.numeric(factors$time), as.numeric(as.factor(factors$subject)), sep = "_"),
-          col = col.stimu, ellipse = T, legend = T, star = F, main='PCA, comp 1 - 2')
+          col = col.stimu, ellipse = T, legend = T, star = F, main='PCA, comp 1 - 2', group = classes)
 plsda1 <- splsda(X, Y=classes, ncomp=comp, scale = scaled)
 plotIndiv(plsda1, ind.names = paste(as.numeric(factors$time), as.numeric(as.factor(factors$subject)), sep = "_"),
           col = col.stimu, style = "ggplot2", ellipse = T, legend = T, star = T, main='PLS-DA, comp 1 - 2')

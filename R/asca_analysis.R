@@ -8,7 +8,6 @@
 #' @import MetStaT
 #' @return permutation
 #' @export asca_analysis
-#'
 #' @examples
 asca_analysis <- function(x, data.info = c("sample", "subject", "time", "class"),
                           permutations = 100, plots = F) {

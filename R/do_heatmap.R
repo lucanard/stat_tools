@@ -1,5 +1,5 @@
 #' Title
-#'
+#' @title do_heatmap
 #' @param x 
 #' @param result 
 #' @param data.info 
@@ -41,13 +41,13 @@ group1 <- as.numeric(as.factor(as.character(CLASSES)))
 color_scale1 <- c("blue", "yellow", "red", "green")
 CLASSES <- color_scale1[match(group1,   as.numeric(as.factor(color_scale1)))]
 SUBJECT <- as.numeric(factors$subject)
-n <- max(unique(as.numeric(dati$subject)))
+n <- length(unique(as.numeric(dati$subject)))
 qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
 col_vector = unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
 color_scale <- sample(col_vector, n)
 SUBJECT <- color_scale[match(SUBJECT,   as.numeric(as.factor(color_scale)))]
 TIME <- as.numeric(as.factor(factors$time))
-n <- max(unique(as.numeric(as.factor(dati$time))))
+n <- length(unique(as.numeric(as.factor(dati$time))))
 qual_col_pals = brewer.pal.info[brewer.pal.info$category == 'qual',]
 col_vector = unlist(mapply(brewer.pal, qual_col_pals$maxcolors, rownames(qual_col_pals)))
 color_scale <- sample(col_vector, n)
